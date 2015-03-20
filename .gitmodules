@@ -19,3 +19,6 @@ url=https://github.com/micongrin/plugin-ExhibitBuilder.git
 [submodule "themes/grinnell"]
 	path = themes/grinnell
 	url = https://micongrin@github.com/DigitalGrinnell/OmekaGrinnellTheme-WMI.git
+[submodule "plugins/SolrSeach"]
+	path = plugins/SolrSeach
+	url = https://micongrin@github.com/micongrin/plugin_SolrSearch.git
