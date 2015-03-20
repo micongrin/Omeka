@@ -16,3 +16,6 @@
 [submodule "themes/berlin"]
 	path = themes/berlin
 	url = git://github.com/omeka/theme-berlin.git
+[submodule "themes/grinnell"]
+	path = themes/grinnell
+	url = https://micongrin@github.com/DigitalGrinnell/OmekaGrinnellTheme-WMI.git
