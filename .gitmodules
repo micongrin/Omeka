@@ -19,6 +19,6 @@
 [submodule "themes/grinnell"]
 	path = themes/grinnell
 	url = https://micongrin@github.com/DigitalGrinnell/OmekaGrinnellTheme-WMI.git
-[submodule "plugins/SolrSeach"]
-	path = plugins/SolrSeach
+[submodule "plugins/SolrSearch"]
+	path = plugins/SolrSearch
 	url = https://micongrin@github.com/micongrin/plugin_SolrSearch.git
