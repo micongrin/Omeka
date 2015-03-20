@@ -1,6 +1,6 @@
 [submodule "plugins/ExhibitBuilder"]
 	path = plugins/ExhibitBuilder
-url=https://github.com/micongrin/plugin-ExhibitBuilder.git
+	url = https://micongrin@github.com/micongrin/plugin-ExhibitBuilder.git
 [submodule "plugins/SimplePages"]
 	path = plugins/SimplePages
 	url = git://github.com/omeka/plugin-SimplePages
