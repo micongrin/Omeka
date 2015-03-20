@@ -53,7 +53,7 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
         'audio/x-mp4'       => 'mp4',
         'audio/wav'         => 'wav',
         'audio/x-wav'       => 'wav',
-        'video/mp4'         => 'mov',
+        'video/mp4'         => 'mp4',
         'video/mpeg'        => 'mov',
         'video/ogg'         => 'mov',
         'video/quicktime'   => 'mov',
@@ -511,7 +511,7 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
               . '</object>';
         return $html;
     }
-    
+
     /**
      * Display OGG audio files.
      * 
@@ -533,7 +533,10 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
      */
     public function mp3($file, array $options = array())
     {
-        return $this->_audio($file, $options, 'audio/mpeg');
+        //send mp3s to the new html5audio function
+        //return $this->_audio($file, $options, 'audio/mpeg');
+        //making sure this change gets tracked in git
+        return $this->_html5audio($file, $options, 'audio/mpeg');
     }
     
     /**
@@ -581,7 +584,7 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
      */
     public function mp4($file, array $options = array())
     {
-        return $this->_audio($file, $options, 'audio/mp4');
+        return $this->_html5video($file, $options, 'audio/mp4');
     }
     
     /**
@@ -595,7 +598,43 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
     {
         return $this->_audio($file, $options, 'audio/x-wav');
     }
-    
+
+    /** Added HTML5 display of audio files
+     * 
+     * @param File $file
+     * @param array $options The set of default options for this includes:
+     *  width, height, autoplay, controller, loop
+     * @param string $type The Internet media type of the file
+     * @return string
+    */
+    private function _html5audio($file, array $options, $type)
+    {
+        $path = html_escape($file->getWebPath('original'));
+        $dublin_files = all_element_texts($file, array('show_element_sets' => array ('Dublin Core'), 'return_type' => 'array'));
+        $html = '<div class="audio"><audio controls><source src="'.$path.'" type="'.$type.'">'
+              . 'Your browser does not support the audio element.'
+              . '</audio>'
+              . '<div class="audio-metadata">'
+              . $dublin_files['Dublin Core']['Description'][0]
+              . '</div></div>';
+        return $html;
+    }
+    /** Added HTML5 display of video files
+     * 
+     * @param File $file
+     * @param array $options The set of default options for this includes:
+     *  width, height, autoplay, controller, loop
+     * @param string $type The Internet media type of the file
+     * @return string
+    */
+    private function _html5video($file, array $options, $type)
+    {
+        $path = html_escape($file->getWebPath('original'));
+        $html = '<video width="100%" controls><source src="'.$path.'" type="'.$type.'">'
+              . 'Your browser does not support the video element.'
+              . '</video>'; 
+        return $html;
+    }
     /**
      * Default display of an icon to represent a file.
      * 
