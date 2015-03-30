@@ -22,3 +22,6 @@
 [submodule "plugins/SolrSearch"]
 	path = plugins/SolrSearch
 	url = https://micongrin@github.com/micongrin/plugin_SolrSearch.git
+[submodule "plugins/SearchByMetadata"]
+	path = plugins/SearchByMetadata
+	url = https://micongrin@github.com/micongrin/plugins_SearchByMetadata.git
