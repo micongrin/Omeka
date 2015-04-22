@@ -630,9 +630,13 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
     private function _html5video($file, array $options, $type)
     {
         $path = html_escape($file->getWebPath('original'));
+        $dublin_files = all_element_texts($file, array('show_element_sets' => array ('Dublin Core'), 'return_type' => 'array'));
         $html = '<video width="100%" controls><source src="'.$path.'" type="'.$type.'">'
               . 'Your browser does not support the video element.'
-              . '</video>'; 
+              . '</video>'              
+              . '<div class="audio-metadata">'
+              . $dublin_files['Dublin Core']['Description'][0]
+              . '</div></div>'; 
         return $html;
     }
     /**
