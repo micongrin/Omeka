@@ -631,7 +631,7 @@ class Omeka_View_Helper_FileMarkup extends Zend_View_Helper_Abstract
     {
         $path = html_escape($file->getWebPath('original'));
         $dublin_files = all_element_texts($file, array('show_element_sets' => array ('Dublin Core'), 'return_type' => 'array'));
-        $html = '<video width="100%" controls><source src="'.$path.'" type="'.$type.'">'
+        $html = '<div class="audio"><video width="100%" controls><source src="'.$path.'" type="'.$type.'">'
               . 'Your browser does not support the video element.'
               . '</video>'              
               . '<div class="audio-metadata">'
